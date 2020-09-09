@@ -16,13 +16,27 @@
 	</organization>
 	
 	<description>Maven Standalone Application</description>
-
-	<properties>
-		<sonar.host.url>http://35.154.242.68:9000/</sonar.host.url>
+		<properties>
+		<sonar.host.url>http://localhost:9000</sonar.host.url>
 		<sonar.login>admin</sonar.login>
 		<sonar.password>admin</sonar.password>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
+
+	<distributionManagement>
+<repository>
+<id>nexus</id>
+<name>Mithun Technologies Releases Nexus Repository</name>
+<url>http://localhost:8081/repository/nexustest/</url>
+</repository>
+<snapshotRepository>
+<id>nexus</id>
+<name>Mithun Technologies Snapshot Nexus Repository </name>
+<url>http://localhost:8081/repository/maventest/</url>
+</snapshotRepository>
+</distributionManagement>
+
 
 	<dependencies>
 
@@ -52,9 +66,24 @@
 
 	
 	<build>
-	  <plugins>
-	    <plugin>
-	      <!-- Build an executable JAR -->
+		<plugins>
+
+
+		<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <configuration>
+        <source>1.6</source>
+        <target>1.6</target>
+    </configuration>
+	</plugin>
+
+
+
+
+		  <plugin>
+
+		   <!-- Build an executable JAR -->
 	      <groupId>org.apache.maven.plugins</groupId>
 	      <artifactId>maven-jar-plugin</artifactId>
 	      <version>3.1.0</version>
